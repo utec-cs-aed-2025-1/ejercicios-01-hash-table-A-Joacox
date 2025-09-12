@@ -67,5 +67,7 @@ g++ -o p1 p1.cpp
 ./p1
 ```
 
+## Evidencia de funcionamiento de P1
 
+![Imagen de evidencia de P1](./assets/P1-terminado.png)
 
