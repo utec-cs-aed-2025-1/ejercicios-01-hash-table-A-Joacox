@@ -71,3 +71,12 @@ g++ -o p1 p1.cpp
 
 ![Imagen de evidencia de P1](./assets/P1-terminado.png)
 
+## Evidencia de funcionamiento de P2
+
+![Imagen de evidencia de P2](./assets/P2-terminado.png)
+
+## Evidencia de funcionamiento de P3
+
+![Imagen de evidencia de P3](./assets/P3-terminado.png)
+
+

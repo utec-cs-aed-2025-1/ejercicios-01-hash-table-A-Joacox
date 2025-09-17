@@ -142,7 +142,7 @@ public:
             this->nsize--;
             this->bucket_sizes[index]--;
 
-            // verificar con bucket_sizes si quedo vacío
+            // verificar con bucket_sizes si quedo vacio
             if (this->bucket_sizes[index] == 0) this->usedBuckets--;
 
             return true;
