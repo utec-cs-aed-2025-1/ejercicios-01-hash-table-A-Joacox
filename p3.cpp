@@ -54,14 +54,53 @@ ListNode* findNode(ListNode* head, int value) {
 // TODO: implementar la conexión de las listas en el nodo con valor intersectVal
 // Si intersectVal no se encuentra, las listas permanecen separadas   
 void connectLists(ListNode* listA, ListNode* listB, int intersectVal) {
-    //TODO: implemente aqui
+    // buscar el nodo con intersectVal en la lista A
+    ListNode* nodeA = findNode(listA, intersectVal);
+    if (!nodeA) return; // si no se encuentra el valor en A, no hacer nada
+    
+    // buscar el nodo con intersectVal en la lista B
+    ListNode* nodeB = findNode(listB, intersectVal);
+    if (!nodeB) return; // si no se encuentra el valor en B, no hacer nada
+    
+    // encontrar el nodo anterior al nodo con intersectVal en la lista B
+    if (listB == nodeB) {
+        // si el primer nodo de B es el de interseccion, no se puede coenctar
+        return;
+    }
+    
+    ListNode* prevB = listB;
+    while (prevB && prevB->next != nodeB) {
+        prevB = prevB->next;
+    }
+    
+    if (prevB) {
+        prevB->next = nodeA;
+    }
 }
-
 
 // TODO: implementar el algoritmo para encontrar la intersección de dos listas
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-    // TODO: implemente aqui
-    return nullptr;
+    if (!headA || !headB) return nullptr;
+    
+    ChainHash<ListNode*, bool> visitedNodes(100);
+    
+    // recorrer la lista A y almacenar todas las direcciones de nodos
+    ListNode* current = headA;
+    while (current) {
+        visitedNodes.set(current, true);
+        current = current->next;
+    }
+    
+    // recorre la lista B y verificar si algun nodo ya fue visitado en A
+    current = headB;
+    while (current) {
+        if (visitedNodes.contains(current)) {
+            return current; // se necontro la interseccion
+        }
+        current = current->next;
+    }
+    
+    return nullptr; // no hay interseccion
 }
 
 void testIntersection(const vector<int>& listA, const vector<int>& listB, 
